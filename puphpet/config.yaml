@@ -96,7 +96,7 @@ nginx:
                 - index.htm
                 - index.php
             client_max_body_size: 1m
-            ssl: '1'
+            ssl: '0'
             ssl_cert: ''
             ssl_key: ''
             ssl_port: '443'
