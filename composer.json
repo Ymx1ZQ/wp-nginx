@@ -1,0 +1,82 @@
+{
+		"name"             : "richaber/wpstack",
+		"description"      : "Install the WordPress stack via Composer.",
+		"license"          : "MIT",
+		"type"             : "project",
+		"authors"          : [
+				{
+						"name"    : "Richard Aber",
+						"email"   : "richaber@gmail.com",
+						"homepage": "https://github.com/richaber/wpstack"
+				}
+		],
+		"config"           : {
+				"preferred-install": "dist",
+				"bin-dir"          : "bin",
+				"vendor-dir"       : "vendor"
+		},
+		"repositories"     : [
+				{
+						"type": "composer",
+						"url" : "http://wpackagist.org"
+				}
+		],
+		"minimum-stability": "dev",
+		"require"          : {
+				"php"                                       : ">=5.4.0",
+				"johnpbloch/wordpress"                      : ">=4.2.2",
+				"fancyguy/webroot-installer"                : ">=1.1.0",
+				"composer/installers"                       : ">=1.0.21",
+                "wpackagist-plugin/advanced-custom-fields"  : "*",
+                "wpackagist-plugin/jetpack"                 : "*",
+                "wpackagist-plugin/pods"                    : "*",
+                "wpackagist-plugin/posts-to-posts"          : "*",
+                "wpackagist-plugin/ricg-responsive-images"  : "*"
+                "wpackagist-plugin/safe-redirect-manager"   : "*",
+                "wpackagist-plugin/simple-page-ordering"    : "*",
+                "wpackagist-plugin/wordpress-seo"           : "*",
+                "wpackagist-plugin/wp-google-analytics"     : "*",
+                "wpackagist-plugin/wp-help"                 : "*",
+                "wpackagist-plugin/wp-pagenavi"             : "*",
+                "wpackagist-theme/twentyfifteen"            : "*"
+		},
+		"require-dev"      : {
+				"phpmd/phpmd"                                          : "@stable",
+				"phpunit/phpunit"                                      : ">=4.5.0",
+				"psy/psysh"                                            : "*",
+				"squizlabs/php_codesniffer"                            : "@stable",
+				"wp-coding-standards/wpcs"                             : "*",
+                "wp-sync-db/wp-sync-db-cli"                            : "*",
+				"wp-sync-db/wp-sync-db-media-files"                    : "*",
+				"wp-sync-db/wp-sync-db"                                : "*",
+				"wpackagist-plugin/debug-bar-actions-and-filters-addon": "*",
+				"wpackagist-plugin/debug-bar-constants"                : "*",
+				"wpackagist-plugin/debug-bar-cron"                     : "*",
+				"wpackagist-plugin/debug-bar-list-dependencies"        : "*",
+				"wpackagist-plugin/debug-bar-post-types"               : "*",
+				"wpackagist-plugin/debug-bar-remote-requests"          : "*",
+				"wpackagist-plugin/debug-bar-roles-and-capabilities"   : "*",
+				"wpackagist-plugin/debug-bar-shortcodes"               : "*",
+				"wpackagist-plugin/debug-bar-transients"               : "*",
+				"wpackagist-plugin/debug-bar"                          : "*",
+				"wpackagist-plugin/log-deprecated-notices"             : ">=0.3",
+				"wpackagist-plugin/rewrite-rules-inspector"            : "*",
+				"wpackagist-plugin/theme-check"                        : "*",
+				"wpackagist-plugin/wordpress-importer"                 : "*",
+                "wpackagist-plugin/query-monitor"                      : ">=2.7.4",
+                "wpackagist-plugin/root-relative-urls"                 : "*",
+                "wpackagist-plugin/simply-show-ids"                    : "*",
+                "wpackagist-plugin/user-switching"                     : "*",
+                "wpackagist-plugin/vip-scanner"                        : "*"
+		},
+		"extra"            : {
+				"wordpress-install-dir": {
+						"johnpbloch/wordpress": "html/wp"
+				},
+				"installer-paths"      : {
+						"html/wp-content/plugins/{$name}/"   : ["type:wordpress-plugin"],
+						"html/wp-content/mu-plugins/{$name}/": ["type:wordpress-muplugin"],
+						"html/wp-content/themes/{$name}/"    : ["type:wordpress-theme"]
+				}
+		}
+}
