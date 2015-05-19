@@ -50,5 +50,6 @@ alias rm='rm -i'
 alias mv='mv -iv'
 alias grep='grep --color=auto -in'
 alias ..='cd ..'
+alias la='ls -Fhal'
 
 source /usr/local/rvm/scripts/rvm

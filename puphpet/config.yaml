@@ -65,6 +65,7 @@ vagrantfile:
 server:
     install: '1'
     packages:
+        - ImageMagick
         - nano
         - vim
 users_groups:
@@ -186,6 +187,7 @@ php:
             - cli
             - intl
             - mcrypt
+            - mbstring
             - curl
             - imag
             - gd
@@ -197,6 +199,9 @@ php:
         error_reporting: '-1'
         session.save_path: /var/lib/php/session
         date.timezone: America/Chicago
+        upload_max_filesize: 32M
+        post_max_size: 32M
+        max_execution_time: 300
     fpm_ini:
         error_log: /var/log/php-fpm.log
     fpm_pools:
@@ -213,10 +218,11 @@ xdebug:
     install: '1'
     settings:
         xdebug.default_enable: '1'
-        xdebug.remote_autostart: '0'
+        xdebug.remote_autostart: '1'
         xdebug.remote_connect_back: '1'
         xdebug.remote_enable: '1'
-        xdebug.remote_handler: dbgp
+        xdebug.remote_handler: 'dbgp'
+        xdebug.remote_host: '10.0.2.2'
         xdebug.remote_port: '9000'
 blackfire:
     install: '0'
@@ -248,8 +254,17 @@ python:
     packages: {  }
     versions: {  }
 nodejs:
-    install: '0'
-    npm_packages: {  }
+    install: '1'
+    npm_packages:
+        - grunt
+        - grunt-cli
+        - grunt-contrib-yuidoc
+        - grunt-contrib-concat
+        - grunt-contrib-uglify
+        - grunt-contrib-jshint
+        - grunt-contrib-watch
+        - grunt-contrib-cssmin
+        - grunt-contrib-jasmine
 hhvm:
     install: '0'
     nightly: 0
