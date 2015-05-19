@@ -103,7 +103,7 @@ nginx:
             ssl_port: '443'
             ssl_protocols: ''
             ssl_ciphers: ''
-            rewrite_to_https: '1'
+            rewrite_to_https: '0'
             spdy: '1'
             locations:
                 nxvl_9q4ht68t9u1f:
@@ -189,7 +189,7 @@ php:
             - mcrypt
             - mbstring
             - curl
-            - imag
+            - imagick
             - gd
         pear: {  }
         pecl:
