@@ -1,0 +1,145 @@
+################################################################################
+# Publicly available plugins and themes should be managed by Composer.
+# Therefore we gitignore plugins, themes, and mu-plugins by default.
+# WHITELIST items that SHOULD be under version control AT BOTTOM of .gitignore.
+################################################################################
+
+
+################################################################################
+# BLACKLIST all the cruft that we don't want under version control
+################################################################################
+
+
+# Vagrant Specific #
+####################
+error/
+puphpet/files/dot/ssh/id_rsa
+puphpet/files/dot/ssh/id_rsa.ppk
+puphpet/files/dot/ssh/id_rsa.pub
+puphpet/files/dot/ssh/root_id_rsa
+puphpet/files/dot/ssh/root_id_rsa.ppk
+puphpet/files/dot/ssh/root_id_rsa.pub
+
+# WordPress #
+#############
+.htaccess
+html/wp-content/advanced-cache.php
+html/wp-content/backup-db/
+html/wp-content/backups/
+html/wp-content/cache/
+html/wp-content/mu-plugins/*
+html/wp-content/plugins/*
+html/wp-content/themes/*
+html/wp-content/upgrade/*
+html/wp-content/uploads/*
+html/wp-content/vendor/
+html/wp-content/wp-cache-config.php
+html/wp/
+html/db-sync/
+html/local-config.php
+html/robots.txt
+html/sitemap.xml
+html/sitemap.xml.gz
+html/wp-local-config.php
+
+# OS files #
+############
+._*
+.AppleDouble
+.DS_Store
+.DS_Store?
+.LSOverride
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Icon?
+Thumbs.db
+
+# IDEs and Editors #
+####################
+_notes
+.cache
+.idea
+.project
+.settings
+*.esproj
+*.sublime-*
+*.tmproj
+*.tmproject
+*.vi
+dwsync.xml
+nbproject
+tmtags
+atlassian-ide-plugin.xml
+*.iml
+sftp_config.json
+
+# Miscellaneous #
+#################
+.vagrant
+*.bak
+*.diff
+*.err
+*.log
+*.orig
+*.rej
+*.sass-cache
+*.sql
+*.swo
+*.swp
+*.zip
+*~
+node_modules
+parameters.yml
+
+# Other VCSs #
+##############
+.hg
+.svn
+
+# Composer #
+############
+bin/*
+vendor/*
+
+# WP-CLI #
+##########
+
+################################################################################
+# Custom/premium items that can't be managed via Composer should be WHITELISTED
+# Also WHITELIST .gitkeep files that maintain installation directory structure
+################################################################################
+
+# WHITELIST composer.lock #
+###########################
+!composer.lock
+
+# WHITELIST bin gitkeep #
+############################
+!bin/.gitkeep
+
+# WHITELIST vendor gitkeep #
+############################
+!vendor/.gitkeep
+
+# WHITELIST upgrade gitkeep #
+#############################
+!html/wp-content/upgrade/.gitkeep
+
+# WHITELIST uploads gitkeep #
+#############################
+!html/wp-content/uploads/.gitkeep
+
+# WHITELIST mu-plugins gitkeep and register theme directory #
+#############################################################
+!html/wp-content/mu-plugins/.gitkeep
+!html/wp-content/mu-plugins/register-theme-directory.php
+!html/wp-content/mu-plugins/jetpack-development-mode.php
+
+# WHITELIST themes gitkeep #
+############################
+!html/wp-content/themes/.gitkeep
+
+# WHITELIST plugins gitkeep #
+#############################
+!html/wp-content/plugins/.gitkeep
