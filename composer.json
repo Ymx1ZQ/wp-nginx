@@ -31,7 +31,7 @@
                 "wpackagist-plugin/jetpack"                 : "*",
                 "wpackagist-plugin/pods"                    : "*",
                 "wpackagist-plugin/posts-to-posts"          : "*",
-                "wpackagist-plugin/ricg-responsive-images"  : "*"
+                "wpackagist-plugin/ricg-responsive-images"  : "*",
                 "wpackagist-plugin/safe-redirect-manager"   : "*",
                 "wpackagist-plugin/simple-page-ordering"    : "*",
                 "wpackagist-plugin/wordpress-seo"           : "*",
