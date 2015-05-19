@@ -1,0 +1,5 @@
+path: html/wp
+debug: false
+core config:
+  extra-php: |
+    define( 'WP_DEBUG', false );
