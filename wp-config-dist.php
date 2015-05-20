@@ -9,26 +9,34 @@
  * @author   Richard Aber <richaber@gmail.com>
  */
 
+/** Local configuration modifications */
+if ( file_exists( __DIR__ . '/local-config.php' ) ) {
+	require __DIR__ . '/local-config.php';
+}
+
+/** Application environment */
+if ( ! defined( 'APP_ENV' ) ) {
+    define( 'APP_ENV', ( getenv( 'APP_ENV' ) ? getenv( 'APP_ENV' ) : 'dev' ) );
+}
+
 /** Path to project root directory */
-define( 'PROJECT_DIR', dirname( __DIR__ ) );
+if ( ! defined( 'PROJECT_DIR' ) ) {
+    define( 'PROJECT_DIR', dirname( __DIR__ ) );
+}
 
 /** Path to public web directory */
-define( 'WEB_DIR', __DIR__ );
+if ( ! defined( 'WEB_DIR' ) ) {
+    define( 'WEB_DIR', __DIR__ );
+}
 
 /** Path to WP Core directory */
-define( 'CORE_DIR', WEB_DIR . '/wp' );
+if ( ! defined( 'CORE_DIR' ) ) {
+    define( 'CORE_DIR', WEB_DIR . '/wp' );
+}
 
 /** Include Composer autoload if available */
 if ( file_exists( PROJECT_DIR . '/vendor/autoload.php' ) ) {
 	require PROJECT_DIR . '/vendor/autoload.php';
-}
-
-/** Application environment */
-defined( 'APP_ENV' ) || define( 'APP_ENV', ( getenv( 'APP_ENV' ) ? getenv( 'APP_ENV' ) : 'production' ) );
-
-/** Local configuration modifications */
-if ( file_exists( WEB_DIR . '/local-config.php' ) ) {
-	require WEB_DIR . '/local-config.php';
 }
 
 /** Increase memory allotted to WordPress PHP @link http://goo.gl/xdcnOA */
@@ -43,7 +51,7 @@ if ( ! defined( 'WP_MAX_MEMORY_LIMIT' ) ) {
 
 /** @var string WP_HOME The site URL @link http://goo.gl/p0sP0U */
 if ( ! defined( 'WP_HOME' ) ) {
-	define( 'WP_HOME', 'http://nginx-project.dev' );
+	define( 'WP_HOME', 'http://' . $_SERVER['HTTP_HOST'] );
 }
 
 /** @var string WP_SITEURL WordPress Core URL @link http://goo.gl/rYTRuQ */
@@ -110,6 +118,11 @@ define( 'AUTH_SALT',        '8)y+CV?7n+lF[c-]!mFkff0]xZL(,*QBbCk@l54q7%Qj*(!sBLl
 define( 'SECURE_AUTH_SALT', 'K6WKQK8N?$J^ L99z0iHLf<didg2NNb>q=Di2i,fhbU#eIeOQ^hI&kdWPOAFk}9Z' );
 define( 'LOGGED_IN_SALT',   'zP+OW<IdH7!}EtEB+-e+<uc=izu_>3`l`ZU8y^&rR~MRl1o.!wJo^@G @nm|+RXu' );
 define( 'NONCE_SALT',       'qTrOK#& npt]: %%kS]= {WP+q`|OPzXD|2DgaU-rk y<dxh/!V96>R~-x(X>hG#' );
+
+/** WordPress Localized Language, defaults to English. */
+if ( ! defined( 'WPLANG' ) ) {
+	define( 'WPLANG', '' );
+}
 
 /** debug mode @link http://goo.gl/QcHLVl */
 if ( 'production' != APP_ENV ) {
