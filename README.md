@@ -40,14 +40,29 @@ Visting [http://awesomeproject.dev:1080/](http://awesomeproject.dev:1080/) shoul
 
 Visiting [http://docs.awesomeproject.dev/](http://docs.awesomeproject.dev/) should bring you to a barebones MDwiki installation.
 
-More Details
-============
+## Command Line Work
+
+It is strongly suggested that command line actions, such as composer install, composer update, wp-cli commands, etc., be performed ***in*** the Guest VM.
+
+Performing command line actions from the Host could have unexpected consequences.
+
+Refer to the [Vagrant SSH documentation](http://docs.vagrantup.com/v2/cli/ssh.html).
+
+## Composer
+
+The composer.json file sits in the root of the project.
+Edit / modify this file to suit your project's needs.
+
+## Structural Details
 
 This Vagrant box was built with [Puphpet.com](https://puphpet.com/), with some additions/modifications to make it more WP friendly. To read more about Puphpet's features, [visit their website](https://puphpet.com/#help).
 
 Points of interest in the Vagrant box outlined below :  
 
 ```
+├── .editorconfig
+├── .gitattributes
+├── .gitignore
 ├── README.md (this file)
 ├── bin (where Composer installs binaries for use in the Guest machine)
 ├── composer.json (the Composer installer that adds WP / Plugins / Themes into the web root)
