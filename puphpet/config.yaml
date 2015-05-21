@@ -3,14 +3,14 @@ vagrantfile:
     vm:
         box: puphpet/ubuntu1404-x64
         box_url: puphpet/ubuntu1404-x64
-        hostname: nginx-project.dev
+        hostname: project.dev
         memory: '1024'
         cpus: '1'
         chosen_provider: virtualbox
         network:
             private_network: 192.168.56.101
             forwarded_port:
-                vflnp_rs81aumnpqkl:
+                vflnp_96jw970o024m:
                     host: '5081'
                     guest: '22'
         post_up_message: ''
@@ -32,7 +32,7 @@ vagrantfile:
                     - '--hiera_config /vagrant/puphpet/puppet/hiera.yaml'
                     - '--parser future'
         synced_folder:
-            vflsf_0orgrnj9doia:
+            vflsf_4wwkygznnh87:
                 source: ./
                 target: /var/www
                 sync_type: nfs
@@ -86,10 +86,10 @@ nginx:
         proxy_buffers: '4 256k'
     upstreams: {  }
     vhosts:
-        nxv_1lc8g6mz2fel:
-            server_name: nginx-project.dev
+        nxv_exs5wj33vh33:
+            server_name: project.dev
             server_aliases:
-                - www.nginx-project.dev
+                - www.project.dev
             www_root: /var/www/html
             listen_port: '80'
             index_files:
@@ -106,7 +106,7 @@ nginx:
             rewrite_to_https: '0'
             spdy: '1'
             locations:
-                nxvl_9q4ht68t9u1f:
+                nxvl_oj29bja1cz8r:
                     location: /
                     autoindex: off
                     try_files:
@@ -116,7 +116,7 @@ nginx:
                     fastcgi: ''
                     fastcgi_index: ''
                     fastcgi_split_path: ''
-                nxvl_b1hu7vdnmdvb:
+                nxvl_7ok0zseymmf3:
                     location: '~ \.php$'
                     autoindex: off
                     try_files:
@@ -129,6 +129,23 @@ nginx:
                     fast_cgi_params_extra:
                         - 'SCRIPT_FILENAME $request_filename'
                         - 'APP_ENV dev'
+        nxv_rljcnsoyldjn:
+            server_name: docs.project.dev
+            www_root: /var/www/docs
+            listen_port: '80'
+            index_files:
+                - index.html
+                - index.htm
+                - index.php
+            client_max_body_size: 1m
+            ssl: '0'
+            ssl_cert: ''
+            ssl_key: ''
+            ssl_port: '443'
+            ssl_protocols: ''
+            ssl_ciphers: ''
+            rewrite_to_https: '1'
+            spdy: '1'
     proxies: {  }
 apache:
     install: '0'
@@ -143,10 +160,10 @@ apache:
         - proxy_fcgi
         - rewrite
     vhosts:
-        av_e96zzjet8x27:
-            servername: nginx-project.dev
+        av_dr5dydm6clqe:
+            servername: project.dev
             serveraliases:
-                - www.nginx-project.dev
+                - www.project.dev
             docroot: /var/www/html
             port: '443'
             setenv:
@@ -160,7 +177,7 @@ apache:
             ssl_protocol: ''
             ssl_cipher: ''
             directories:
-                avd_cflo9kivih7d:
+                avd_rnfga42kqja8:
                     path: /var/www/html
                     options:
                         - Indexes
@@ -172,7 +189,7 @@ apache:
                         - 'all granted'
                     custom_fragment: ''
                     files_match:
-                        avdfm_130yniss91hc:
+                        avdfm_d6ks5rktopg7:
                             path: \.php$
                             sethandler: 'proxy:fcgi://127.0.0.1:9000'
                             custom_fragment: ''
@@ -201,11 +218,11 @@ php:
         date.timezone: America/Chicago
         upload_max_filesize: 32M
         post_max_size: 32M
-        max_execution_time: 300
+        max_execution_time: '300'
     fpm_ini:
         error_log: /var/log/php-fpm.log
     fpm_pools:
-        phpfp_ot3dy36cm8m5:
+        phpfp_aazxs41rluwy:
             ini:
                 prefix: www
                 listen: '127.0.0.1:9000'
@@ -221,8 +238,8 @@ xdebug:
         xdebug.remote_autostart: '1'
         xdebug.remote_connect_back: '1'
         xdebug.remote_enable: '1'
-        xdebug.remote_handler: 'dbgp'
-        xdebug.remote_host: '10.0.2.2'
+        xdebug.remote_handler: dbgp
+        xdebug.remote_host: 10.0.2.2
         xdebug.remote_port: '9000'
 blackfire:
     install: '0'
@@ -288,15 +305,15 @@ mysql:
         override_options: {  }
     adminer: 0
     users:
-        mysqlnu_hvmoxyr7osap:
+        mysqlnu_vekvh0iak4j3:
             name: dbuser
             password: '123'
     databases:
-        mysqlnd_2hv891zathpf:
+        mysqlnd_oab7puh7j15l:
             name: dbname
             sql: ''
     grants:
-        mysqlng_wh03rpa147kk:
+        mysqlng_ekxgji7ql4aj:
             user: dbuser
             table: '*.*'
             privileges:
