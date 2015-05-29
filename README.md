@@ -1,16 +1,70 @@
 # wp-nginx
 
+*You can choose to run Apache instead, if preferred...*
+
 Clone this repo.
 
-CD to the project directory and open the puphpet/config.yaml file in your favorite text editor or IDE.
+CD to the project directory and remove the .git directory.
 
-Search for ```project.dev``` and replace with your project's development domain, *for example*, ```awesomeproject.dev```. *(Examples throughout refer to awesomeproject.dev, obviously, this probably isn't your project's URL).*
+```
+rm -rf .git
+```
+
+Add to your own git repo *(doing something kind of like)*...
+
+```
+git init
+git remote add origin git@github.com:yourname/foo.git
+git fetch
+git branch master origin/master
+git checkout master
+git add -A
+git commit -m 'first commit'
+git push
+
+```
+
+Edit the puphpet/config.yaml file in your favorite text editor or IDE.
+
+Search for ```project.dev``` and replace with your project's development domain, *for example*, ```awesomeproject.dev```. *(Examples throughout refer to awesomeproject.dev, obviously, this probably isn't your project's desired URL).*
+
+If you would rather have Apache than NGINX, find this block of text in the puphpet/config.yaml file...
+
+```
+nginx:
+    install: '1'
+```
+
+And change it to this : 
+
+```
+nginx:
+    install: '0'
+```
+
+Then find...
+
+```
+apache:
+    install: '0'
+```
+
+and change it to this : 
+
+```
+apache:
+    install: '1'
+```
 
 Save the file.
 
-Edit your [hosts file](http://en.wikipedia.org/wiki/Hosts_\(file\)).
+Install the vagrant hostmanager plugin, 
 
-Add :  
+```
+vagrant plugin install vagrant-hostmanager
+```
+
+OR edit your [hosts file](http://en.wikipedia.org/wiki/Hosts_\(file\)) and add :  
 
 ```
 192.168.56.101    awesomeproject.dev    www.awesomeproject.dev    docs.awesomeproject.dev  
@@ -28,7 +82,7 @@ $ vagrant up
 
 Have a cup of coffee while Vagrant downloads the necessary files.
 
-Upon success, you will have a guest Linux environment running Ubuntu 14, NGINX 1.8.0, PHP 5.6.8, and MySQL 5.6.22. This will act as your local dev server for the project. **This Vagrant box is not intended for production use!**
+Upon success, you will have a guest Linux environment running Ubuntu 14, NGINX 1.8.0 (or Apache 2.4 if you chose to enable Apache instead), PHP 5.6.8, and MySQL 5.6.22. This will act as your local dev server for the project. **This Vagrant box is not intended for production use!**
 
 When the machine has finished booting, you should be able to visit [http://awesomeproject.dev](http://awesomeproject.dev) in your browser.
 
@@ -99,6 +153,17 @@ Default Plugins Installed By Composer :
 
 ```
 
+## Connecting to Dev Database
+
+This installation does not include a copy of phpMyAdmin, since we do not recommend using this tool for making changes to the MySQL database. 
+
+The preferred way to connect to your database is using a dedicated application like [Sequel Pro (OS X)](http://www.sequelpro.com/), [HeidiSQL (Windows)](http://www.heidisql.com/), or [MySQL Workbench (available for NIX, Mac, and Win platforms).](http://dev.mysql.com/downloads/workbench/)
+
+Connect using SSH tunnel, username vagrant and SSH key generated at puphpet/files/dot/ssh/id_rsa. This key is generated after your initial $ vagrant up!
+
+Create a connection using "Standard TCP/IP over SSH," the SSH Hostname is "awesomeproject.dev:22", the SSH Username is "vagrant", do not enter an SSH password, the SSH Key File to use is located at (/path/to/your/project/)puphpet/files/dot/ssh/id_rsa. The MySQL Hostname is "localhost", the MySQL Server Port is "3306", the MySQL Username is "root", the password is "123".
+
+The SSH Key File is generated after your initial $ vagrant up.
 
 ## Structural Details
 
