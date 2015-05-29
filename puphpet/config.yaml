@@ -195,6 +195,20 @@ apache:
                             custom_fragment: ''
                             provider: filesmatch
                     provider: directory
+        av_zq6auhu7ompa:
+            servername: docs.project.dev
+            serveraliases:
+                - docs.project.dev
+            docroot: /var/www/docs
+            port: '80'
+            custom_fragment: ''
+            ssl: '0'
+            ssl_cert: ''
+            ssl_key: ''
+            ssl_chain: ''
+            ssl_certs_dir: ''
+            ssl_protocol: ''
+            ssl_cipher: ''
 php:
     install: '1'
     settings:
